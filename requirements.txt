@@ -1,0 +1,3 @@
+# Password Security Demo - Dependencies
+
+bcrypt>=4.0.0
