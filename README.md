@@ -1,78 +1,127 @@
-# 🔐 Password Cracking & Hashing – Cybersecurity Project
+# Password Security Demo 🔐
 
-This project demonstrates how passwords are stored securely using cryptographic hash functions and explores techniques used to crack weak passwords using brute-force and dictionary attacks.
+Three simple demos showing how passwords are cracked and how to store them safely.
+Built with plain Python — easy to read and understand.
 
-> ⚠️ **Note:** This project is intended strictly for **educational purposes** and to raise awareness about password vulnerabilities. Do not use this knowledge for unethical purposes.
-
----
-
-## 📁 Project Structure
-
+> ⚠️ **For learning only.** Do not use on accounts you don't own.
 
 ---
 
-## 🧩 Project Description
+## What's Inside
 
-This project includes **two core modules**:
-
-### 1️⃣ Password Cracking
-
-- **Brute-force attack**:
-  - Tries every possible combination of characters
-  - Works on small and simple passwords
-- **Dictionary attack**:
-  - Uses a file of common passwords to guess user passwords
-  - Fast but only as good as the dictionary used
-
-### 2️⃣ Hashing Algorithms
-
-- Demonstrates how to securely hash and verify passwords using:
-  - `MD5`, `SHA1`, `SHA256` (for demonstration)
-  - `bcrypt` (industry-recommended with salt)
+```
+password-security-demo/
+│
+├── brute_force_demo.py
+├── dictionary_attack.py
+├── hash_demo.py
+│
+├── wordlist.txt
+│
+├── README.md
+├── requirements.txt
+├── LICENSE
+└── .gitignore
+```
 
 ---
 
-## 🚀 How to Run the Code
+## The 3 Demos
 
-> ✅ Prerequisite: Install Python and `bcrypt`
+### 💥 Brute Force
+Tries every possible combination until it finds the password.
+```
+Trying: a, b, c ... aa, ab ... 1a, 1b ...
+Found: abc in 3.2 seconds
+```
 
-Install dependencies:
+### 📖 Dictionary Attack
+Tries a list of common passwords one by one.
+```
+Trying: 123456 ... password ... letmein
+Found: letmein in 0.01 seconds
+```
+
+### 🔒 Hash Demo
+Shows how passwords are stored safely using hashing.
+```
+"hello"  →  MD5:    5d41402abc4b2a76b9719d911017c592
+"hello"  →  bcrypt: $2b$12$... (different every time!)
+```
+
+---
+
+## Setup
+
 ```bash
-pip install bcrypt
+# Install the only dependency (bcrypt)
+pip install -r requirements.txt
+```
 
-python advanced_hash_demo.py
-python advanced_brute_force_demo.py
-python advanced_dictionary_attack.py
+---
 
+## How to Run
 
-Hashing
-yaml
-Copy
-Edit
-MD5 Hash:       03ff9bba2d24446a8c90e967de66eaa5
-SHA1 Hash:      c3ce83e4b2b934c84e11c042160f67122e449508
-SHA256 Hash:    3975db6c57f8f94dc86138b6bca418f9982db81ac9f5821598fd73e31f7bba41
-bcrypt Hash:    $2b$12$V86Xrs1yo4...
-Password Verified using bcrypt: ✅ Success
+```bash
+python brute_force_demo.py
+python dictionary_attack.py
+python hash_demo.py
+```
 
+---
 
+## Example Output
 
+**Brute Force**
+```
+Password found: ab3
+Attempts: 1,234
+Time: 2.5 seconds
+```
 
-Brute-force Attack
-yaml
-Copy
-Edit
-Trying: a
-Trying: b
-...
-Password found: 12a
-Time taken: 3.21 seconds
+**Dictionary Attack**
+```
+Password cracked: letmein
+Attempts: 32
+Time: 0.01 seconds
+```
 
-Dictionary Attack
-yaml
-Copy
-Edit
-Trying password: password123
-Trying password: welcome
-Password matched: letmein
-Time taken: 0.01 seconds
+**Hash Demo**
+```
+MD5:    5d41402abc4b2a76b9719d911017c592  ❌ Weak
+SHA256: 2cf24dba5fb0a30e26e83b2ac5b9e29e  ⚠️  OK
+bcrypt: $2b$12$V86Xrs1yo4...              ✅ Recommended
+```
+
+---
+
+## Why Does This Matter?
+
+| Attack | Works On | Fails On |
+|--------|----------|----------|
+| Brute Force | Short passwords | Long passwords (12+ chars) |
+| Dictionary | Common passwords | Random passwords |
+| Both | MD5/SHA hashed passwords | bcrypt hashed passwords |
+
+---
+
+## Stay Safe
+
+- ✅ Use passwords 12+ characters long
+- ✅ Mix letters, numbers and symbols
+- ✅ Use a password manager
+- ✅ Turn on 2FA everywhere
+- ❌ Never reuse passwords
+
+---
+
+## Requirements
+
+- Python 3.6+
+- `bcrypt` (see requirements.txt)
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE)
